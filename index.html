@@ -534,7 +534,7 @@
         .card-stack {
             position: relative;
             width: 100%;
-            height: 380px;
+            height: 420px;
             max-width: 300px;
         }
 
@@ -545,7 +545,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-radius: 25px;
-            padding: 24px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -555,6 +555,7 @@
             touch-action: none;
             user-select: none;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
         }
 
         .card:hover {
@@ -578,30 +579,82 @@
             pointer-events: none;
         }
 
+        .card-profile-photo {
+            width: 100%;
+            height: 140px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
         .card-content {
             text-align: center;
+            flex: 1;
         }
 
         .card-name {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             letter-spacing: 0.5px;
         }
 
         .card-goal {
-            font-size: 14px;
+            font-size: 13px;
             opacity: 0.95;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             font-weight: 500;
+        }
+
+        .compatibility-score {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .compatibility-score .score-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .compatibility-score .score-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .compatibility-score .score-bar {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            overflow: hidden;
+            min-width: 50px;
+        }
+
+        .compatibility-score .score-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
         }
 
         .card-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            font-size: 12px;
-            opacity: 0.9;
+            font-size: 11px;
         }
 
         .card-stat {
@@ -611,6 +664,17 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             font-weight: 500;
+        }
+
+        .card-stat-label {
+            font-size: 9px;
+            opacity: 0.8;
+        }
+
+        .card-stat-value {
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 2px;
         }
 
         .action-buttons {
@@ -678,6 +742,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            display: flex;
+            gap: 12px;
         }
 
         .match-card:hover {
@@ -691,11 +757,28 @@
             transform: scale(0.98);
         }
 
+        .match-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            flex-shrink: 0;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .match-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .match-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
+            align-items: flex-start;
+            margin-bottom: 8px;
         }
 
         .match-name {
@@ -720,7 +803,7 @@
         .match-goal {
             font-size: 13px;
             color: #c0c0d0;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .match-details {
@@ -765,8 +848,19 @@
             padding: 14px 16px;
             border-radius: 12px;
             margin: -16px -16px 0 -16px;
-            padding: 14px 16px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-header-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .chat-header h3 {
@@ -1000,16 +1094,12 @@
                                 <input type="password" id="loginPassword" placeholder="Enter password">
                             </div>
                             <button class="submit-btn" onclick="login()">Login</button>
-                            <div class="toggle-auth">
-                                Don't have account? <a onclick="navigate('signup')">Sign Up</a>
-                            </div>
-                            <div style="text-align: center; margin-top: 16px; font-size: 11px; color: #707080;">
-                                Demo Accounts (password: password)
-                            </div>
                             <div class="demo-buttons">
-                                <button class="demo-btn" onclick="loginDemo('alex@test.com')">🎬 Alex</button>
-                                <button class="demo-btn" onclick="loginDemo('jordan@test.com')">✍️ Jordan</button>
-                                <button class="demo-btn" onclick="loginDemo('sam@test.com')">🏃 Sam</button>
+                                <button class="demo-btn" onclick="demoLogin('user1')">Demo: Alex</button>
+                                <button class="demo-btn" onclick="demoLogin('user2')">Demo: Jordan</button>
+                            </div>
+                            <div class="toggle-auth">
+                                New user? <a onclick="navigate('signup')">Sign Up</a>
                             </div>
                         </div>
                     </div>
@@ -1022,14 +1112,67 @@
                     <div class="onboarding-page">
                         <div>
                             <div class="progress-bar">
-                                <div class="progress-fill" id="progressFill"></div>
+                                <div class="progress-fill" style="width: 33%"></div>
                             </div>
-                            <h2 id="questionTitle"></h2>
-                            <div id="optionsContainer" class="options"></div>
+                            <h2>What's your main goal?</h2>
+                            <div class="options">
+                                <button class="option-btn" onclick="selectGoal('Fitness')">💪 Fitness & Health</button>
+                                <button class="option-btn" onclick="selectGoal('Learning')">📚 Learning & Growth</button>
+                                <button class="option-btn" onclick="selectGoal('Career')">🚀 Career Development</button>
+                                <button class="option-btn" onclick="selectGoal('Hobby')">🎨 Creative Hobby</button>
+                            </div>
                         </div>
                         <div class="nav-buttons">
-                            <button class="back-btn" id="backBtn" onclick="previousQuestion()" style="display:none;">← Back</button>
-                            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                            <button class="back-btn" onclick="navigate('login')">Back</button>
+                            <button class="next-btn" onclick="navigate('onboarding-2')">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onboarding Page 2 -->
+            <div class="page" id="onboarding-2">
+                <div class="content">
+                    <div class="onboarding-page">
+                        <div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 66%"></div>
+                            </div>
+                            <h2>How many hours/week?</h2>
+                            <div class="options">
+                                <button class="option-btn" onclick="selectSchedule('5 hours')">⏱️ 5 hours/week</button>
+                                <button class="option-btn" onclick="selectSchedule('10 hours')">⏱️ 10 hours/week</button>
+                                <button class="option-btn" onclick="selectSchedule('15 hours')">⏱️ 15 hours/week</button>
+                                <button class="option-btn" onclick="selectSchedule('20+ hours')">⏱️ 20+ hours/week</button>
+                            </div>
+                        </div>
+                        <div class="nav-buttons">
+                            <button class="back-btn" onclick="navigate('onboarding')">Back</button>
+                            <button class="next-btn" onclick="navigate('onboarding-3')">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Onboarding Page 3 -->
+            <div class="page" id="onboarding-3">
+                <div class="content">
+                    <div class="onboarding-page">
+                        <div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <h2>Best time to check in?</h2>
+                            <div class="options">
+                                <button class="option-btn" onclick="selectTime('Morning'); navigate('dashboard')">🌅 Morning (6-10am)</button>
+                                <button class="option-btn" onclick="selectTime('Afternoon'); navigate('dashboard')">☀️ Afternoon (12-6pm)</button>
+                                <button class="option-btn" onclick="selectTime('Evening'); navigate('dashboard')">🌙 Evening (6-10pm)</button>
+                                <button class="option-btn" onclick="selectTime('Flexible'); navigate('dashboard')">⏰ Flexible</button>
+                            </div>
+                        </div>
+                        <div class="nav-buttons">
+                            <button class="back-btn" onclick="navigate('onboarding-2')">Back</button>
+                            <button class="next-btn" onclick="navigate('dashboard')">Start</button>
                         </div>
                     </div>
                 </div>
@@ -1040,60 +1183,43 @@
                 <div class="dashboard-content">
                     <div class="dashboard-header">
                         <div class="user-info">
-                            <div class="user-name" id="userNameSidebar">User</div>
-                            <div class="user-goal" id="userGoalSidebar">Goal</div>
+                            <div class="user-name">Welcome, Alex 👋</div>
+                            <div class="user-goal">Goal: Fitness & Health</div>
                         </div>
-                        <button class="logout-btn" onclick="logout()">Logout</button>
+                        <button class="logout-btn" onclick="navigate('landing')">Logout</button>
                     </div>
 
                     <div class="dashboard-tabs">
-                        <button class="tab-btn active" onclick="showTab('swipe')">🔥 Swipe</button>
-                        <button class="tab-btn" onclick="showTab('matches')">❤️ Matches</button>
-                        <button class="tab-btn" onclick="showTab('chat')">💬 Chat</button>
+                        <button class="tab-btn active" onclick="switchTab('discover')">Discover</button>
+                        <button class="tab-btn" onclick="switchTab('matches')">Matches</button>
+                        <button class="tab-btn" onclick="switchTab('chat')">Messages</button>
                     </div>
 
-                    <!-- Swipe Tab -->
-                    <div id="swipeTab" class="tab-content active">
+                    <div class="tab-content active" id="discover-tab">
                         <div class="swipe-container">
                             <div class="card-stack" id="cardStack"></div>
-                            <div id="noMoreCards" style="display:none;" class="no-more">
-                                <div style="font-size: 40px; margin-bottom: 8px;">🎉</div>
-                                <div>No more matches</div>
-                            </div>
                             <div class="action-buttons">
-                                <button class="action-btn skip-btn" onclick="skipCard()">✕</button>
+                                <button class="action-btn skip-btn" onclick="skipCard()">👋</button>
                                 <button class="action-btn like-btn" onclick="likeCard()">❤️</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Matches Tab -->
-                    <div id="matchesTab" class="tab-content">
-                        <div id="matchesContainer" class="matches-grid"></div>
-                        <div id="noMatches" style="display:none;" class="empty-state">
+                    <div class="tab-content" id="matches-tab">
+                        <div class="matches-grid" id="matchesList"></div>
+                        <div class="empty-state" id="noMatches" style="display: none;">
                             <div>
                                 <h3>No matches yet</h3>
-                                <p>Swipe and like someone!</p>
+                                <p>Swipe right to find your accountability partner!</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Chat Tab -->
-                    <div id="chatTab" class="tab-content">
-                        <div id="chatSelector" class="empty-state">
+                    <div class="tab-content" id="chat-tab">
+                        <div class="empty-state">
                             <div>
-                                <h3>Select a match</h3>
-                                <p>Choose from matches to chat</p>
-                            </div>
-                        </div>
-                        <div id="chatWindow" style="display:none;" class="chat-window">
-                            <div class="chat-header">
-                                <h3 id="chatWith">Chat</h3>
-                            </div>
-                            <div class="messages" id="messagesContainer"></div>
-                            <div class="input-area">
-                                <input type="text" id="messageInput" placeholder="Message...">
-                                <button onclick="sendMessage()">Send</button>
+                                <h3>Select a match to chat</h3>
+                                <p>Visit the Matches tab to start a conversation</p>
                             </div>
                         </div>
                     </div>
@@ -1103,431 +1229,352 @@
     </div>
 
     <script>
-        // Sample users with detailed dummy data
-        const demoUsers = [
-            { id: 1, email: 'alex@test.com', password: 'password', name: 'Alex', goal: 'Learn video editing', level: 'Beginner', looking: 'Same level', frequency: 'Daily', time: 'Morning', style: 'Structured', deadline: '3 months', collab: 'Chat only' },
-            { id: 2, email: 'jordan@test.com', password: 'password', name: 'Jordan', goal: 'Improve content writing', level: 'Intermediate', looking: 'Learn together', frequency: '3-4 times/week', time: 'Afternoon', style: 'Flexible', deadline: '1 month', collab: 'Check-ins' },
-            { id: 3, email: 'sam@test.com', password: 'password', name: 'Sam', goal: 'Run 5km daily', level: 'Beginner', looking: 'Same level', frequency: 'Daily', time: 'Morning', style: 'Competitive', deadline: 'No deadline', collab: 'Chat' },
-            { id: 4, email: 'casey@test.com', password: 'password', name: 'Casey', goal: 'Learn video editing', level: 'Intermediate', looking: 'Same level', frequency: 'Daily', time: 'Evening', style: 'Structured', deadline: '3 months', collab: 'Voice/video' },
-            { id: 5, email: 'morgan@test.com', password: 'password', name: 'Morgan', goal: 'Run 5km daily', level: 'Intermediate', looking: 'Competitive', frequency: 'Daily', time: 'Morning', style: 'Competitive', deadline: 'No deadline', collab: 'Chat' },
-            { id: 6, email: 'taylor@test.com', password: 'password', name: 'Taylor', goal: 'Improve storytelling', level: 'Beginner', looking: 'More experienced', frequency: '3-4 times/week', time: 'Evening', style: 'Flexible', deadline: '1 month', collab: 'Check-ins' },
-            { id: 7, email: 'riley@test.com', password: 'password', name: 'Riley', goal: 'Learn video editing', level: 'Beginner', looking: 'More experienced', frequency: '3-4 times/week', time: 'Afternoon', style: 'Structured', deadline: '3 months', collab: 'Voice/video' },
-            { id: 8, email: 'blake@test.com', password: 'password', name: 'Blake', goal: 'Learn video editing', level: 'Advanced', looking: 'Learn together', frequency: 'Daily', time: 'Morning', style: 'Flexible', deadline: 'No deadline', collab: 'Chat' }
+        // Dummy user data with photos
+        const dummyUsers = [
+            {
+                id: 1,
+                name: 'Sarah',
+                goal: '💪 Fitness & Health',
+                subGoal: 'Run 3x a week',
+                photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%23667eea" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23ffc107"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%23ff6b6b"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23ffc107" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23ffc107" rx="12"/%3E%3C/svg%3E',
+                schedule: '10 hours/week',
+                timezone: 'EST',
+                preferredTime: 'Morning',
+                experience: 'Intermediate',
+                compatibility: 87
+            },
+            {
+                id: 2,
+                name: 'Mike',
+                goal: '📚 Learning & Growth',
+                subGoal: 'Learn Python',
+                photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%23764ba2" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%2362b8ff"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%234a90e2"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%2362b8ff" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%2362b8ff" rx="12"/%3E%3C/svg%3E',
+                schedule: '15 hours/week',
+                timezone: 'PST',
+                preferredTime: 'Afternoon',
+                experience: 'Beginner',
+                compatibility: 92
+            },
+            {
+                id: 3,
+                name: 'Emma',
+                goal: '🎨 Creative Hobby',
+                subGoal: 'Oil Painting Skills',
+                photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%23ff6b6b" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23ffe66d"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%23a8e6cf"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23ffe66d" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23ffe66d" rx="12"/%3E%3C/svg%3E',
+                schedule: '8 hours/week',
+                timezone: 'CST',
+                preferredTime: 'Evening',
+                experience: 'Beginner',
+                compatibility: 78
+            },
+            {
+                id: 4,
+                name: 'James',
+                goal: '💪 Fitness & Health',
+                subGoal: 'Build muscle mass',
+                photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%2390be6d" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23f7b731"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%23ee5a6f"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23f7b731" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23f7b731" rx="12"/%3E%3C/svg%3E',
+                schedule: '12 hours/week',
+                timezone: 'EST',
+                preferredTime: 'Morning',
+                experience: 'Advanced',
+                compatibility: 95
+            },
+            {
+                id: 5,
+                name: 'Lisa',
+                goal: '🚀 Career Development',
+                subGoal: 'Leadership skills',
+                photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%236c5ce7" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23a29bfe"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%2374b9ff"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23a29bfe" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23a29bfe" rx="12"/%3E%3C/svg%3E',
+                schedule: '20 hours/week',
+                timezone: 'EST',
+                preferredTime: 'Flexible',
+                experience: 'Advanced',
+                compatibility: 88
+            },
+            {
+                id: 6,
+                name: 'David',
+                goal: '📚 Learning & Growth',
+                subGoal: 'Master React.js',
+                photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%2361dafb" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23ffd700"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%23282c34"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23ffd700" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23ffd700" rx="12"/%3E%3C/svg%3E',
+                schedule: '15 hours/week',
+                timezone: 'GMT',
+                preferredTime: 'Evening',
+                experience: 'Intermediate',
+                compatibility: 85
+            }
         ];
 
-        const questions = [
-            { title: '🎯 What goal are you working on?', type: 'text', key: 'goal' },
-            { title: '📊 Current level?', type: 'choice', key: 'level', options: ['Beginner', 'Intermediate', 'Advanced'] },
-            { title: '⏱️ How often?', type: 'choice', key: 'frequency', options: ['Daily', '3-4 times/week', 'Weekends'] },
-            { title: '🕒 Preferred time?', type: 'choice', key: 'time', options: ['Morning', 'Afternoon', 'Evening'] },
-            { title: '⚡ Working style?', type: 'choice', key: 'style', options: ['Structured', 'Flexible', 'Competitive'] },
-        ];
-
-        let currentUser = null;
-        let currentQuestion = 0;
-        let onboardingData = {};
         let currentCardIndex = 0;
-        let currentChatMatch = null;
-        let dragStart = { x: 0, y: 0 };
-        let currentCard = null;
+        let likedUsers = [];
+        let selectedGoal = '';
+        let selectedSchedule = '';
+        let selectedTime = '';
 
-        if (!localStorage.getItem('users')) {
-            localStorage.setItem('users', JSON.stringify(demoUsers));
-        }
+        function generateCompatibilityScore(currentUser, targetUser) {
+            let score = 50; // base score
 
-        function navigate(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(page).classList.add('active');
+            // Goal match (0-25 points)
+            if (currentUser.goal === targetUser.goal) score += 25;
+            
+            // Schedule match (0-25 points)
+            const scheduleMatch = {
+                '5 hours': 5,
+                '10 hours': 10,
+                '15 hours': 15,
+                '20+ hours': 20
+            };
+            const currentHours = parseInt(currentUser.schedule);
+            const targetHours = parseInt(targetUser.schedule);
+            const hourDiff = Math.abs(currentHours - targetHours);
+            score += Math.max(0, 25 - (hourDiff * 2));
 
-            if (page === 'onboarding') {
-                currentQuestion = 0;
-                onboardingData = {};
-                showQuestion();
-            } else if (page === 'dashboard') {
-                loadDashboard();
+            // Preferred time match (0-20 points)
+            if (currentUser.preferredTime === targetUser.preferredTime) score += 20;
+            else score += 10;
+
+            // Experience level match (0-10 points)
+            if (currentUser.experience === targetUser.experience) score += 10;
+            else if ((currentUser.experience === 'Intermediate' && targetUser.experience === 'Beginner') ||
+                     (currentUser.experience === 'Beginner' && targetUser.experience === 'Intermediate')) {
+                score += 5;
             }
+
+            return Math.min(100, Math.round(score));
         }
 
-        function showTab(tab) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tab + 'Tab').classList.add('active');
+        function renderCard() {
+            const cardStack = document.getElementById('cardStack');
+            if (currentCardIndex >= dummyUsers.length) {
+                cardStack.innerHTML = '<div class="no-more">No more users to discover! Check your matches 🎉</div>';
+                return;
+            }
+
+            const user = dummyUsers[currentCardIndex];
+            const compatibility = generateCompatibilityScore(
+                { goal: selectedGoal, schedule: selectedSchedule, preferredTime: selectedTime, experience: 'Intermediate' },
+                user
+            );
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${user.photo}" class="card-profile-photo" alt="${user.name}">
+                <div class="card-content">
+                    <div class="card-name">${user.name}</div>
+                    <div class="card-goal">${user.goal}</div>
+                    <div class="card-goal" style="font-size: 12px; opacity: 0.8;">"${user.subGoal}"</div>
+                </div>
+                <div class="compatibility-score">
+                    <span class="score-label">Match</span>
+                    <span class="score-value">${compatibility}%</span>
+                    <div class="score-bar">
+                        <div class="score-bar-fill" style="width: ${compatibility}%"></div>
+                    </div>
+                </div>
+                <div class="card-stats">
+                    <div class="card-stat">
+                        <div class="card-stat-label">TIME</div>
+                        <div class="card-stat-value">${user.schedule}</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-label">LEVEL</div>
+                        <div class="card-stat-value">${user.experience}</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-label">TIMEZONE</div>
+                        <div class="card-stat-value">${user.timezone}</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-label">CHECK-IN</div>
+                        <div class="card-stat-value">${user.preferredTime}</div>
+                    </div>
+                </div>
+            `;
+
+            cardStack.innerHTML = '';
+            cardStack.appendChild(card);
+            setupCardDragListeners(card);
+        }
+
+        function setupCardDragListeners(card) {
+            let startX = 0;
+            let startY = 0;
+            let isDragging = false;
+
+            card.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                card.classList.add('dragging');
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const diffX = e.clientX - startX;
+                const angle = (diffX / 100) * 35;
+                card.style.transform = `translateX(${diffX}px) rotate(${angle}deg)`;
+            });
+
+            document.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                card.classList.remove('dragging');
+                const diffX = e.clientX - startX;
+
+                if (Math.abs(diffX) > 100) {
+                    if (diffX > 0) {
+                        card.classList.add('swiped-right');
+                        likeCard();
+                    } else {
+                        card.classList.add('swiped-left');
+                        skipCard();
+                    }
+                } else {
+                    card.style.transform = '';
+                }
+            });
+        }
+
+        function likeCard() {
+            const user = dummyUsers[currentCardIndex];
+            likedUsers.push({
+                ...user,
+                compatibility: generateCompatibilityScore(
+                    { goal: selectedGoal, schedule: selectedSchedule, preferredTime: selectedTime, experience: 'Intermediate' },
+                    user
+                )
+            });
+            currentCardIndex++;
+            renderCard();
+            renderMatches();
+        }
+
+        function skipCard() {
+            currentCardIndex++;
+            renderCard();
+        }
+
+        function renderMatches() {
+            const matchesList = document.getElementById('matchesList');
+            const noMatches = document.getElementById('noMatches');
+
+            if (likedUsers.length === 0) {
+                matchesList.innerHTML = '';
+                noMatches.style.display = 'flex';
+                return;
+            }
+
+            noMatches.style.display = 'none';
+            matchesList.innerHTML = likedUsers.map(user => `
+                <div class="match-card" onclick="openChat('${user.name}')">
+                    <img src="${user.photo}" class="match-photo" alt="${user.name}">
+                    <div class="match-info">
+                        <div class="match-header">
+                            <div class="match-name">${user.name}</div>
+                            <div class="match-badge">${user.compatibility}% Match</div>
+                        </div>
+                        <div class="match-goal">${user.goal}</div>
+                        <div class="match-details">
+                            <span>⏱️ ${user.schedule}</span>
+                            <span>🌍 ${user.timezone}</span>
+                            <span>${user.preferredTime}</span>
+                        </div>
+                    </div>
+                    <button class="chat-btn" onclick="event.stopPropagation(); openChat('${user.name}')">Message</button>
+                </div>
+            `).join('');
+        }
+
+        function openChat(userName) {
+            const chatTab = document.getElementById('chat-tab');
+            const user = likedUsers.find(u => u.name === userName);
+            
+            chatTab.innerHTML = `
+                <div class="chat-window">
+                    <div class="chat-header">
+                        <img src="${user.photo}" class="chat-header-photo" alt="${user.name}">
+                        <h3>${user.name}</h3>
+                    </div>
+                    <div class="messages">
+                        <div class="message received">
+                            <div class="message-content">Hey! Love your dedication to ${user.goal.toLowerCase()}! 💪</div>
+                        </div>
+                        <div class="message sent">
+                            <div class="message-content">Thanks! I'm really excited to find an accountability partner!</div>
+                        </div>
+                        <div class="message received">
+                            <div class="message-content">When do you usually work on your goals?</div>
+                        </div>
+                    </div>
+                    <div class="input-area">
+                        <input type="text" placeholder="Type a message...">
+                        <button onclick="alert('Message sent!')">Send</button>
+                    </div>
+                </div>
+            `;
+            
+            switchTab('chat');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
             event.target.classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
 
-            if (tab === 'swipe') {
-                currentCardIndex = 0;
-                showSwipeCard();
-            } else if (tab === 'matches') {
-                showMatches();
+        function navigate(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            if (pageId === 'dashboard') {
+                setTimeout(() => renderCard(), 100);
             }
+        }
+
+        function selectGoal(goal) {
+            selectedGoal = goal;
+            document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+        }
+
+        function selectSchedule(schedule) {
+            selectedSchedule = schedule;
+            document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+        }
+
+        function selectTime(time) {
+            selectedTime = time;
         }
 
         function signup() {
             const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
-
-            if (!email || !password) {
-                alert('Please fill all fields');
-                return;
+            if (email && password) {
+                navigate('onboarding');
+            } else {
+                alert('Please fill in all fields');
             }
-
-            const newUser = {
-                id: Date.now(),
-                email: email,
-                password: password,
-                name: email.split('@')[0],
-                goal: '',
-                onboarded: false,
-                likes: [],
-                matches: [],
-                messages: {}
-            };
-
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
-            currentUser = newUser;
-            localStorage.setItem('currentUser', JSON.stringify(newUser));
-            navigate('onboarding');
         }
 
         function login() {
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-
-            if (!email || !password) {
-                alert('Please fill all fields');
-                return;
-            }
-
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            const user = users.find(u => u.email === email && u.password === password);
-
-            if (user) {
-                currentUser = user;
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                if (!user.onboarded) {
-                    navigate('onboarding');
-                } else {
-                    navigate('dashboard');
-                }
+            if (email && password) {
+                navigate('onboarding');
             } else {
-                alert('Invalid email or password');
+                alert('Please fill in all fields');
             }
         }
 
-        function loginDemo(email) {
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            const user = users.find(u => u.email === email);
-            if (user) {
-                currentUser = user;
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                navigate('dashboard');
-            }
-        }
-
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('currentUser');
-            navigate('landing');
-        }
-
-        function showQuestion() {
-            const q = questions[currentQuestion];
-            document.getElementById('questionTitle').textContent = q.title;
-            document.getElementById('progressFill').style.width = ((currentQuestion + 1) / questions.length * 100) + '%';
-
-            const container = document.getElementById('optionsContainer');
-            container.innerHTML = '';
-
-            if (q.type === 'text') {
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.id = 'textInput';
-                input.placeholder = 'Enter your goal...';
-                input.style.width = '100%';
-                input.style.padding = '12px';
-                input.style.borderRadius = '10px';
-                input.style.border = '2px solid rgba(102, 126, 234, 0.2)';
-                input.style.fontSize = '14px';
-                input.style.background = 'rgba(22, 33, 62, 0.5)';
-                input.style.color = '#e0e0e0';
-                container.appendChild(input);
-                input.focus();
-            } else {
-                q.options.forEach(opt => {
-                    const btn = document.createElement('button');
-                    btn.className = 'option-btn';
-                    btn.textContent = opt;
-                    btn.onclick = () => selectOption(opt, btn);
-                    container.appendChild(btn);
-                });
-            }
-
-            document.getElementById('backBtn').style.display = currentQuestion === 0 ? 'none' : 'block';
-            document.getElementById('nextBtn').textContent = currentQuestion === questions.length - 1 ? '✓ Done' : 'Next →';
-        }
-
-        function selectOption(opt, btn) {
-            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            onboardingData[questions[currentQuestion].key] = opt;
-        }
-
-        function nextQuestion() {
-            const q = questions[currentQuestion];
-            if (q.type === 'text') {
-                const value = document.getElementById('textInput').value;
-                if (!value) {
-                    alert('Please fill in your answer');
-                    return;
-                }
-                onboardingData[q.key] = value;
-            } else if (!onboardingData[q.key]) {
-                alert('Please select an option');
-                return;
-            }
-
-            if (currentQuestion === questions.length - 1) {
-                completeOnboarding();
-            } else {
-                currentQuestion++;
-                showQuestion();
-            }
-        }
-
-        function previousQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                showQuestion();
-            }
-        }
-
-        function completeOnboarding() {
-            currentUser = { ...currentUser, ...onboardingData, onboarded: true, likes: [], matches: [], messages: {} };
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            const index = users.findIndex(u => u.id === currentUser.id);
-            if (index !== -1) users[index] = currentUser;
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        function demoLogin(userId) {
+            selectedGoal = '💪 Fitness & Health';
+            selectedSchedule = '10 hours/week';
+            selectedTime = 'Morning';
             navigate('dashboard');
-        }
-
-        function loadDashboard() {
-            currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            document.getElementById('userNameSidebar').textContent = currentUser.name || currentUser.email.split('@')[0];
-            document.getElementById('userGoalSidebar').textContent = currentUser.goal || 'No goal set';
-            showSwipeCard();
-        }
-
-        function getCompatibleUsers() {
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            return users.filter(u =>
-                u.id !== currentUser.id &&
-                u.goal &&
-                currentUser.goal &&
-                u.goal.toLowerCase().includes(currentUser.goal.toLowerCase()) &&
-                (!currentUser.likes || !currentUser.likes.includes(u.id))
-            );
-        }
-
-        function showSwipeCard() {
-            const compatible = getCompatibleUsers();
-            const container = document.getElementById('cardStack');
-
-            if (compatible.length === 0) {
-                document.getElementById('noMoreCards').style.display = 'block';
-                container.innerHTML = '';
-                return;
-            }
-
-            document.getElementById('noMoreCards').style.display = 'none';
-            container.innerHTML = '';
-
-            const user = compatible[currentCardIndex];
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <div class="card-content">
-                    <div class="card-name">${user.name}</div>
-                    <div class="card-goal">${user.goal}</div>
-                    <div class="card-stats">
-                        <div class="card-stat">📊 ${user.level}</div>
-                        <div class="card-stat">⏱️ ${user.frequency}</div>
-                        <div class="card-stat">🕒 ${user.time}</div>
-                        <div class="card-stat">⚡ ${user.style}</div>
-                    </div>
-                </div>
-            `;
-
-            card.addEventListener('mousedown', startDrag);
-            card.addEventListener('touchstart', startDrag);
-
-            container.appendChild(card);
-            currentCard = card;
-        }
-
-        function startDrag(e) {
-            if (!currentCard) return;
-            dragStart.x = e.clientX || e.touches[0].clientX;
-            dragStart.y = e.clientY || e.touches[0].clientY;
-
-            document.addEventListener('mousemove', drag);
-            document.addEventListener('touchmove', drag);
-            document.addEventListener('mouseup', endDrag);
-            document.addEventListener('touchend', endDrag);
-
-            currentCard.classList.add('dragging');
-        }
-
-        function drag(e) {
-            if (!currentCard) return;
-            const currentX = e.clientX || e.touches[0].clientX;
-            const currentY = e.clientY || e.touches[0].clientY;
-            const diffX = currentX - dragStart.x;
-            const diffY = currentY - dragStart.y;
-            const angle = (diffX / 200) * 25;
-
-            currentCard.style.transform = `translateX(${diffX}px) translateY(${diffY}px) rotate(${angle}deg)`;
-            currentCard.style.opacity = 1 - Math.abs(diffX) / 300;
-        }
-
-        function endDrag(e) {
-            if (!currentCard) return;
-            const diffX = currentCard.style.transform.match(/translateX\(([^)]*)/)?.[1]?.replace('px', '') || 0;
-
-            document.removeEventListener('mousemove', drag);
-            document.removeEventListener('touchmove', drag);
-            document.removeEventListener('mouseup', endDrag);
-            document.removeEventListener('touchend', endDrag);
-            currentCard.classList.remove('dragging');
-
-            if (Math.abs(diffX) > 100) {
-                if (diffX > 0) {
-                    likeCard();
-                } else {
-                    skipCard();
-                }
-            } else {
-                currentCard.style.transform = 'translateX(0) translateY(0) rotate(0deg)';
-                currentCard.style.opacity = 1;
-            }
-        }
-
-        function skipCard() {
-            if (currentCard) {
-                currentCard.classList.add('swiped-left');
-                setTimeout(() => {
-                    currentCardIndex++;
-                    showSwipeCard();
-                }, 300);
-            }
-        }
-
-        function likeCard() {
-            if (currentCard) {
-                currentCard.classList.add('swiped-right');
-                const compatible = getCompatibleUsers();
-                const user = compatible[currentCardIndex];
-
-                currentUser.likes.push(user.id);
-                const users = JSON.parse(localStorage.getItem('users') || '[]');
-                const likedUser = users.find(u => u.id === user.id);
-
-                if (likedUser && likedUser.likes && likedUser.likes.includes(currentUser.id)) {
-                    if (!currentUser.matches) currentUser.matches = [];
-                    currentUser.matches.push(user.id);
-                }
-
-                const index = users.findIndex(u => u.id === currentUser.id);
-                if (index !== -1) users[index] = currentUser;
-                localStorage.setItem('users', JSON.stringify(users));
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-                setTimeout(() => {
-                    currentCardIndex++;
-                    showSwipeCard();
-                }, 300);
-            }
-        }
-
-        function showMatches() {
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            const matches = users.filter(u => currentUser.matches && currentUser.matches.includes(u.id));
-
-            const container = document.getElementById('matchesContainer');
-            container.innerHTML = '';
-
-            if (matches.length === 0) {
-                document.getElementById('noMatches').style.display = 'block';
-                return;
-            }
-
-            document.getElementById('noMatches').style.display = 'none';
-
-            matches.forEach(match => {
-                const card = document.createElement('div');
-                card.className = 'match-card';
-                card.innerHTML = `
-                    <div class="match-header">
-                        <div class="match-name">${match.name}</div>
-                        <div class="match-badge">✓ Matched</div>
-                    </div>
-                    <div class="match-goal">${match.goal}</div>
-                    <div class="match-details">
-                        <span>${match.frequency}</span>
-                        <span>${match.time}</span>
-                    </div>
-                    <button class="chat-btn" onclick="openChat(${match.id})">💬 Chat</button>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function openChat(matchId) {
-            currentChatMatch = matchId;
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            const match = users.find(u => u.id === matchId);
-
-            document.getElementById('chatSelector').style.display = 'none';
-            document.getElementById('chatWindow').style.display = 'flex';
-            document.getElementById('chatWith').textContent = `Chat with ${match.name}`;
-
-            loadMessages();
-        }
-
-        function loadMessages() {
-            const chatKey = `chat_${Math.min(currentUser.id, currentChatMatch)}_${Math.max(currentUser.id, currentChatMatch)}`;
-            const messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
-            const container = document.getElementById('messagesContainer');
-            container.innerHTML = '';
-
-            messages.forEach(msg => {
-                const div = document.createElement('div');
-                div.className = `message ${msg.sender === currentUser.id ? 'sent' : 'received'}`;
-                div.innerHTML = `<div class="message-content">${msg.text}</div>`;
-                container.appendChild(div);
-            });
-
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('messageInput');
-            const text = input.value.trim();
-
-            if (!text) return;
-
-            const chatKey = `chat_${Math.min(currentUser.id, currentChatMatch)}_${Math.max(currentUser.id, currentChatMatch)}`;
-            const messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
-            messages.push({
-                sender: currentUser.id,
-                text: text
-            });
-
-            localStorage.setItem(chatKey, JSON.stringify(messages));
-            input.value = '';
-            loadMessages();
         }
     </script>
 </body>
