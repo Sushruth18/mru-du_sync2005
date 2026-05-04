@@ -70,7 +70,6 @@
             overflow: hidden;
         }
 
-        /* Navigation */
         nav {
             background: rgba(26, 26, 46, 0.8);
             padding: 12px 0;
@@ -113,7 +112,6 @@
             box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
-        /* Content Area */
         .content {
             flex: 1;
             overflow-y: auto;
@@ -145,7 +143,6 @@
             flex-direction: column;
         }
 
-        /* Landing Page */
         .landing-page {
             text-align: center;
             justify-content: space-around;
@@ -208,7 +205,6 @@
             box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
-        /* Auth Pages */
         .auth-page {
             justify-content: center;
         }
@@ -323,7 +319,6 @@
             text-decoration: underline;
         }
 
-        /* Onboarding */
         .onboarding-page {
             justify-content: space-between;
         }
@@ -424,7 +419,6 @@
             box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
-        /* Dashboard */
         .dashboard-page {
             justify-content: flex-start;
             padding: 0;
@@ -476,7 +470,6 @@
             background: rgba(255, 255, 255, 0.25);
         }
 
-        /* Tabs */
         .dashboard-tabs {
             display: flex;
             gap: 0;
@@ -520,7 +513,6 @@
             flex-direction: column;
         }
 
-        /* Swipe Section */
         .swipe-container {
             width: 100%;
             height: 100%;
@@ -727,7 +719,6 @@
             font-size: 14px;
         }
 
-        /* Matches Section */
         .matches-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -744,6 +735,7 @@
             backdrop-filter: blur(10px);
             display: flex;
             gap: 12px;
+            flex-direction: column;
         }
 
         .match-card:hover {
@@ -755,6 +747,11 @@
 
         .match-card:active {
             transform: scale(0.98);
+        }
+
+        .match-top {
+            display: flex;
+            gap: 12px;
         }
 
         .match-photo {
@@ -814,27 +811,60 @@
             flex-wrap: wrap;
         }
 
-        .chat-btn {
-            width: 100%;
-            padding: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        .contact-options {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .contact-btn {
+            flex: 1;
+            padding: 12px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
             font-size: 12px;
-            margin-top: 12px;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .text-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .chat-btn:hover {
+        .text-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
-        /* Chat Section */
+        .call-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .call-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.5);
+        }
+
+        .video-btn {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .video-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(33, 150, 243, 0.5);
+        }
+
         .chat-window {
             display: flex;
             flex-direction: column;
@@ -849,6 +879,12 @@
             border-radius: 12px;
             margin: -16px -16px 0 -16px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header-left {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -866,6 +902,31 @@
         .chat-header h3 {
             font-size: 14px;
             font-weight: 600;
+        }
+
+        .chat-header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-action-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-action-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
         }
 
         .messages {
@@ -919,6 +980,35 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: #707080;
+            margin-top: 4px;
+            opacity: 0.7;
+        }
+
+        .call-notification {
+            background: rgba(76, 175, 80, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #4CAF50;
+        }
+
+        .video-notification {
+            background: rgba(33, 150, 243, 0.15);
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #2196F3;
         }
 
         @keyframes slideIn {
@@ -1015,14 +1105,12 @@
 </head>
 <body>
     <div class="mobile-container">
-        <!-- Status Bar -->
         <div class="status-bar">
             <span>9:41</span>
             <span>🎯 Goal Buddy</span>
             <span>100%</span>
         </div>
 
-        <!-- Navigation -->
         <nav>
             <div class="nav-container">
                 <div class="logo">🎯 Goal Buddy</div>
@@ -1032,9 +1120,7 @@
             </div>
         </nav>
 
-        <!-- Content Area -->
         <div class="app-container">
-            <!-- Landing Page -->
             <div class="page active" id="landing">
                 <div class="content">
                     <div class="landing-page">
@@ -1044,8 +1130,8 @@
                         <div class="features-list">
                             <div>🤝 Swipe through matches</div>
                             <div>⚡ Same goals & schedule</div>
-                            <div>💬 Real-time chat</div>
-                            <div>🚀 Stay accountable</div>
+                            <div>💬 Text, Call & Video Chat</div>
+                            <div>🚀 Stay accountable together</div>
                         </div>
 
                         <div class="cta-buttons">
@@ -1056,7 +1142,6 @@
                 </div>
             </div>
 
-            <!-- Sign Up Page -->
             <div class="page" id="signup">
                 <div class="content">
                     <div class="auth-page">
@@ -1079,7 +1164,6 @@
                 </div>
             </div>
 
-            <!-- Login Page -->
             <div class="page" id="login">
                 <div class="content">
                     <div class="auth-page">
@@ -1106,7 +1190,6 @@
                 </div>
             </div>
 
-            <!-- Onboarding Page -->
             <div class="page" id="onboarding">
                 <div class="content">
                     <div class="onboarding-page">
@@ -1130,7 +1213,6 @@
                 </div>
             </div>
 
-            <!-- Onboarding Page 2 -->
             <div class="page" id="onboarding-2">
                 <div class="content">
                     <div class="onboarding-page">
@@ -1154,7 +1236,6 @@
                 </div>
             </div>
 
-            <!-- Onboarding Page 3 -->
             <div class="page" id="onboarding-3">
                 <div class="content">
                     <div class="onboarding-page">
@@ -1178,7 +1259,6 @@
                 </div>
             </div>
 
-            <!-- Dashboard Page -->
             <div class="page" id="dashboard">
                 <div class="dashboard-content">
                     <div class="dashboard-header">
@@ -1229,79 +1309,112 @@
     </div>
 
     <script>
-        // Dummy user data with photos
         const dummyUsers = [
             {
                 id: 1,
-                name: 'Sarah',
+                name: 'Sarah Chen',
                 goal: '💪 Fitness & Health',
-                subGoal: 'Run 3x a week',
+                subGoal: 'Run 3x a week, complete a 5K',
                 photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%23667eea" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23ffc107"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%23ff6b6b"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23ffc107" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23ffc107" rx="12"/%3E%3C/svg%3E',
                 schedule: '10 hours/week',
                 timezone: 'EST',
                 preferredTime: 'Morning',
                 experience: 'Intermediate',
-                compatibility: 87
+                location: 'Boston, MA',
+                verified: true,
+                messages: [
+                    { time: '2:30 PM', text: 'Hey! Love your dedication to fitness!', sender: 'received' },
+                    { time: '2:32 PM', text: 'Thanks! I\'m really excited to find an accountability partner!', sender: 'sent' },
+                    { time: '2:35 PM', text: 'When do you usually work on your goals?', sender: 'received' },
+                    { time: '2:36 PM', text: 'Mostly early mornings before work, around 6-7am', sender: 'sent' }
+                ]
             },
             {
                 id: 2,
-                name: 'Mike',
+                name: 'Mike Johnson',
                 goal: '📚 Learning & Growth',
-                subGoal: 'Learn Python',
+                subGoal: 'Master Python & build projects',
                 photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%23764ba2" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%2362b8ff"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%234a90e2"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%2362b8ff" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%2362b8ff" rx="12"/%3E%3C/svg%3E',
                 schedule: '15 hours/week',
                 timezone: 'PST',
                 preferredTime: 'Afternoon',
                 experience: 'Beginner',
-                compatibility: 92
+                location: 'San Francisco, CA',
+                verified: true,
+                messages: [
+                    { time: '1:15 PM', text: 'Great profile! I\'m also learning Python', sender: 'received' },
+                    { time: '1:18 PM', text: 'Amazing! Want to code together sometime?', sender: 'sent' },
+                    { time: '1:22 PM', text: 'Absolutely! Maybe we could do video calls to review each other\'s code', sender: 'received' },
+                    { time: '1:24 PM', text: '📞 Call received - 5 mins', sender: 'received' }
+                ]
             },
             {
                 id: 3,
-                name: 'Emma',
+                name: 'Emma Williams',
                 goal: '🎨 Creative Hobby',
-                subGoal: 'Oil Painting Skills',
+                subGoal: 'Oil painting, complete 10 pieces',
                 photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%23ff6b6b" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23ffe66d"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%23a8e6cf"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23ffe66d" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23ffe66d" rx="12"/%3E%3C/svg%3E',
                 schedule: '8 hours/week',
                 timezone: 'CST',
                 preferredTime: 'Evening',
                 experience: 'Beginner',
-                compatibility: 78
+                location: 'Austin, TX',
+                verified: false,
+                messages: [
+                    { time: '6:45 PM', text: 'Your goal sounds amazing!', sender: 'received' },
+                    { time: '6:47 PM', text: 'Thank you! I\'d love to share progress with someone', sender: 'sent' }
+                ]
             },
             {
                 id: 4,
-                name: 'James',
+                name: 'James Martinez',
                 goal: '💪 Fitness & Health',
-                subGoal: 'Build muscle mass',
+                subGoal: 'Build muscle, gym 5x/week',
                 photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%2390be6d" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23f7b731"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%23ee5a6f"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23f7b731" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23f7b731" rx="12"/%3E%3C/svg%3E',
                 schedule: '12 hours/week',
                 timezone: 'EST',
                 preferredTime: 'Morning',
                 experience: 'Advanced',
-                compatibility: 95
+                location: 'Miami, FL',
+                verified: true,
+                messages: [
+                    { time: '7:20 AM', text: 'Let\'s crush it this week! 💪', sender: 'received' },
+                    { time: '7:22 AM', text: 'Let\'s go! Just finished my morning run', sender: 'sent' }
+                ]
             },
             {
                 id: 5,
-                name: 'Lisa',
+                name: 'Lisa Anderson',
                 goal: '🚀 Career Development',
-                subGoal: 'Leadership skills',
+                subGoal: 'Learn leadership, aim for manager role',
                 photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%236c5ce7" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23a29bfe"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%2374b9ff"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23a29bfe" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23a29bfe" rx="12"/%3E%3C/svg%3E',
                 schedule: '20 hours/week',
                 timezone: 'EST',
                 preferredTime: 'Flexible',
                 experience: 'Advanced',
-                compatibility: 88
+                location: 'New York, NY',
+                verified: true,
+                messages: [
+                    { time: '5:15 PM', text: '📱 Video call received - 12 mins', sender: 'received' },
+                    { time: '5:27 PM', text: 'Great catching up! Let\'s do this again next week', sender: 'received' }
+                ]
             },
             {
                 id: 6,
-                name: 'David',
+                name: 'David Lee',
                 goal: '📚 Learning & Growth',
-                subGoal: 'Master React.js',
+                subGoal: 'Master React.js, build 3 projects',
                 photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect fill="%2361dafb" width="200" height="200"/%3E%3Ccircle cx="100" cy="60" r="30" fill="%23ffd700"/%3E%3Cellipse cx="100" cy="130" rx="35" ry="45" fill="%23282c34"/%3E%3Crect x="50" y="90" width="25" height="50" fill="%23ffd700" rx="12"/%3E%3Crect x="125" y="90" width="25" height="50" fill="%23ffd700" rx="12"/%3E%3C/svg%3E',
                 schedule: '15 hours/week',
                 timezone: 'GMT',
                 preferredTime: 'Evening',
                 experience: 'Intermediate',
-                compatibility: 85
+                location: 'London, UK',
+                verified: true,
+                messages: [
+                    { time: '11:45 PM', text: 'Just finished a module, feeling good!', sender: 'sent' },
+                    { time: '11:50 PM', text: 'That\'s awesome! Proud of your progress 🎉', sender: 'received' }
+                ]
             }
         ];
 
@@ -1310,30 +1423,20 @@
         let selectedGoal = '';
         let selectedSchedule = '';
         let selectedTime = '';
+        let currentChatUser = null;
 
         function generateCompatibilityScore(currentUser, targetUser) {
-            let score = 50; // base score
-
-            // Goal match (0-25 points)
+            let score = 50;
             if (currentUser.goal === targetUser.goal) score += 25;
             
-            // Schedule match (0-25 points)
-            const scheduleMatch = {
-                '5 hours': 5,
-                '10 hours': 10,
-                '15 hours': 15,
-                '20+ hours': 20
-            };
             const currentHours = parseInt(currentUser.schedule);
             const targetHours = parseInt(targetUser.schedule);
             const hourDiff = Math.abs(currentHours - targetHours);
             score += Math.max(0, 25 - (hourDiff * 2));
 
-            // Preferred time match (0-20 points)
             if (currentUser.preferredTime === targetUser.preferredTime) score += 20;
             else score += 10;
 
-            // Experience level match (0-10 points)
             if (currentUser.experience === targetUser.experience) score += 10;
             else if ((currentUser.experience === 'Intermediate' && targetUser.experience === 'Beginner') ||
                      (currentUser.experience === 'Beginner' && targetUser.experience === 'Intermediate')) {
@@ -1361,7 +1464,7 @@
             card.innerHTML = `
                 <img src="${user.photo}" class="card-profile-photo" alt="${user.name}">
                 <div class="card-content">
-                    <div class="card-name">${user.name}</div>
+                    <div class="card-name">${user.name} ${user.verified ? '✓' : ''}</div>
                     <div class="card-goal">${user.goal}</div>
                     <div class="card-goal" style="font-size: 12px; opacity: 0.8;">"${user.subGoal}"</div>
                 </div>
@@ -1382,8 +1485,8 @@
                         <div class="card-stat-value">${user.experience}</div>
                     </div>
                     <div class="card-stat">
-                        <div class="card-stat-label">TIMEZONE</div>
-                        <div class="card-stat-value">${user.timezone}</div>
+                        <div class="card-stat-label">LOCATION</div>
+                        <div class="card-stat-value">${user.location}</div>
                     </div>
                     <div class="card-stat">
                         <div class="card-stat-label">CHECK-IN</div>
@@ -1399,13 +1502,11 @@
 
         function setupCardDragListeners(card) {
             let startX = 0;
-            let startY = 0;
             let isDragging = false;
 
             card.addEventListener('mousedown', (e) => {
                 isDragging = true;
                 startX = e.clientX;
-                startY = e.clientY;
                 card.classList.add('dragging');
             });
 
@@ -1467,49 +1568,84 @@
 
             noMatches.style.display = 'none';
             matchesList.innerHTML = likedUsers.map(user => `
-                <div class="match-card" onclick="openChat('${user.name}')">
-                    <img src="${user.photo}" class="match-photo" alt="${user.name}">
-                    <div class="match-info">
-                        <div class="match-header">
-                            <div class="match-name">${user.name}</div>
-                            <div class="match-badge">${user.compatibility}% Match</div>
-                        </div>
-                        <div class="match-goal">${user.goal}</div>
-                        <div class="match-details">
-                            <span>⏱️ ${user.schedule}</span>
-                            <span>🌍 ${user.timezone}</span>
-                            <span>${user.preferredTime}</span>
+                <div class="match-card">
+                    <div class="match-top">
+                        <img src="${user.photo}" class="match-photo" alt="${user.name}">
+                        <div class="match-info">
+                            <div class="match-header">
+                                <div class="match-name">${user.name} ${user.verified ? '✓' : ''}</div>
+                                <div class="match-badge">${user.compatibility}% Match</div>
+                            </div>
+                            <div class="match-goal">${user.goal}</div>
+                            <div class="match-details">
+                                <span>📍 ${user.location}</span>
+                                <span>⏱️ ${user.schedule}</span>
+                                <span>🌍 ${user.timezone}</span>
+                            </div>
                         </div>
                     </div>
-                    <button class="chat-btn" onclick="event.stopPropagation(); openChat('${user.name}')">Message</button>
+                    <div class="contact-options">
+                        <button class="contact-btn text-btn" onclick="openChat('${user.name}', '${user.id}')">💬 Text</button>
+                        <button class="contact-btn call-btn" onclick="initiateCall('${user.name}', 'voice')">☎️ Call</button>
+                        <button class="contact-btn video-btn" onclick="initiateCall('${user.name}', 'video')">📹 Video</button>
+                    </div>
                 </div>
             `).join('');
         }
 
-        function openChat(userName) {
-            const chatTab = document.getElementById('chat-tab');
+        function initiateCall(userName, type) {
             const user = likedUsers.find(u => u.name === userName);
+            const typeName = type === 'video' ? 'Video Call' : 'Voice Call';
+            alert(`📞 Initiating ${typeName} with ${userName}...\n\nNote: In a real app, this would use WebRTC for actual calling.`);
+        }
+
+        function openChat(userName, userId) {
+            const user = likedUsers.find(u => u.name === userName);
+            currentChatUser = user;
+            
+            const chatTab = document.getElementById('chat-tab');
+            
+            const messagesHTML = user.messages.map(msg => {
+                const isCall = msg.text.includes('Call');
+                const isVideo = msg.text.includes('Video');
+                
+                if (isVideo) {
+                    return `<div class="video-notification">${msg.text}</div>`;
+                } else if (isCall) {
+                    return `<div class="call-notification">${msg.text}</div>`;
+                }
+                
+                return `
+                    <div class="message ${msg.sender}">
+                        <div>
+                            <div class="message-content">${msg.text}</div>
+                            <div class="message-time">${msg.time}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
             
             chatTab.innerHTML = `
                 <div class="chat-window">
                     <div class="chat-header">
-                        <img src="${user.photo}" class="chat-header-photo" alt="${user.name}">
-                        <h3>${user.name}</h3>
+                        <div class="chat-header-left">
+                            <img src="${user.photo}" class="chat-header-photo" alt="${user.name}">
+                            <div>
+                                <h3>${user.name}</h3>
+                                <span style="font-size: 11px; opacity: 0.8;">Online</span>
+                            </div>
+                        </div>
+                        <div class="chat-header-actions">
+                            <button class="chat-action-btn" onclick="initiateCall('${user.name}', 'voice')" title="Voice Call">☎️</button>
+                            <button class="chat-action-btn" onclick="initiateCall('${user.name}', 'video')" title="Video Call">📹</button>
+                        </div>
                     </div>
                     <div class="messages">
-                        <div class="message received">
-                            <div class="message-content">Hey! Love your dedication to ${user.goal.toLowerCase()}! 💪</div>
-                        </div>
-                        <div class="message sent">
-                            <div class="message-content">Thanks! I'm really excited to find an accountability partner!</div>
-                        </div>
-                        <div class="message received">
-                            <div class="message-content">When do you usually work on your goals?</div>
-                        </div>
+                        ${messagesHTML}
                     </div>
                     <div class="input-area">
                         <input type="text" placeholder="Type a message...">
-                        <button onclick="alert('Message sent!')">Send</button>
+                        <button onclick="sendMessage()">Send</button>
                     </div>
                 </div>
             `;
@@ -1517,11 +1653,22 @@
             switchTab('chat');
         }
 
+        function sendMessage() {
+            alert('Message sent! 📬');
+        }
+
         function switchTab(tabName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             
-            event.target.classList.add('active');
+            // Find and activate the button
+            const buttons = document.querySelectorAll('.tab-btn');
+            const tabs = ['discover', 'matches', 'chat'];
+            const index = tabs.indexOf(tabName);
+            if (buttons[index]) {
+                buttons[index].classList.add('active');
+            }
+            
             document.getElementById(tabName + '-tab').classList.add('active');
         }
 
