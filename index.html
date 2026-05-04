@@ -12,14 +12,15 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
             min-height: 100vh;
-            color: #333;
+            color: #e0e0e0;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            overflow: hidden;
         }
 
         .mobile-container {
@@ -27,13 +28,27 @@
             max-width: 390px;
             height: 100vh;
             max-height: 844px;
-            background: white;
-            border-radius: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 45px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(102, 126, 234, 0.1);
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            border: 8px solid #333;
+            border: 10px solid #0f0f1e;
+            position: relative;
+        }
+
+        .mobile-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #0f0f1e;
+            border-radius: 0 0 25px 25px;
+            z-index: 100;
         }
 
         .status-bar {
@@ -45,6 +60,7 @@
             align-items: center;
             font-size: 12px;
             font-weight: 600;
+            margin-top: 8px;
         }
 
         .app-container {
@@ -56,10 +72,11 @@
 
         /* Navigation */
         nav {
-            background: white;
+            background: rgba(26, 26, 46, 0.8);
             padding: 12px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-bottom: 1px solid #f0f0f0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         nav .nav-container {
@@ -72,11 +89,14 @@
         nav .logo {
             font-size: 20px;
             font-weight: bold;
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .auth-btn {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 8px 16px;
             border: none;
@@ -84,11 +104,13 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 12px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .auth-btn:hover {
-            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
         /* Content Area */
@@ -96,6 +118,21 @@
             flex: 1;
             overflow-y: auto;
             padding: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(102, 126, 234, 0.3) rgba(26, 26, 46, 0.5);
+        }
+
+        .content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: rgba(26, 26, 46, 0.5);
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 3px;
         }
 
         .page {
@@ -116,14 +153,18 @@
         }
 
         .landing-page h1 {
-            font-size: 32px;
-            color: #667eea;
+            font-size: 36px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .landing-page p {
             font-size: 14px;
-            color: #666;
+            color: #b0b0c0;
             margin-bottom: 24px;
         }
 
@@ -131,11 +172,16 @@
             text-align: left;
             margin: 20px 0;
             font-size: 13px;
-            line-height: 1.8;
+            line-height: 2;
+            color: #c0c0d0;
         }
 
         .features-list div {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            padding: 8px 12px;
+            background: rgba(102, 126, 234, 0.08);
+            border-left: 3px solid #667eea;
+            border-radius: 6px;
         }
 
         .cta-buttons {
@@ -147,18 +193,19 @@
         .cta-btn {
             padding: 12px;
             font-size: 14px;
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .cta-btn:hover {
-            background: #764ba2;
-            transform: scale(1.02);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
         /* Auth Pages */
@@ -168,10 +215,18 @@
 
         .auth-form {
             width: 100%;
+            background: rgba(22, 33, 62, 0.5);
+            padding: 24px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .auth-form h2 {
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
             font-size: 20px;
         }
@@ -185,38 +240,48 @@
             margin-bottom: 6px;
             font-weight: 600;
             font-size: 13px;
-            color: #333;
+            color: #b0b0c0;
         }
 
         .form-group input {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            background: rgba(15, 15, 30, 0.6);
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder {
+            color: #707080;
         }
 
         .form-group input:focus {
             outline: none;
             border-color: #667eea;
+            background: rgba(15, 15, 30, 0.8);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
         }
 
         .submit-btn {
             width: 100%;
             padding: 12px;
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .submit-btn:hover {
-            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
         .demo-buttons {
@@ -228,26 +293,27 @@
 
         .demo-btn {
             padding: 10px;
-            background: #f0f0f0;
+            background: rgba(102, 126, 234, 0.1);
             border: 2px solid #667eea;
             color: #667eea;
             border-radius: 10px;
             font-size: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .demo-btn:hover {
             background: #667eea;
             color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .toggle-auth {
             text-align: center;
             margin-top: 12px;
             font-size: 12px;
-            color: #666;
+            color: #707080;
         }
 
         .toggle-auth a {
@@ -265,7 +331,7 @@
         .progress-bar {
             width: 100%;
             height: 6px;
-            background: #e0e0e0;
+            background: rgba(102, 126, 234, 0.1);
             border-radius: 10px;
             margin-bottom: 16px;
             overflow: hidden;
@@ -273,12 +339,16 @@
 
         .progress-fill {
             height: 100%;
-            background: #667eea;
-            transition: width 0.3s;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
         }
 
         .onboarding-page h2 {
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 16px;
             font-size: 16px;
         }
@@ -293,25 +363,28 @@
 
         .option-btn {
             padding: 12px;
-            border: 2px solid #e0e0e0;
-            background: white;
-            border-radius: 10px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            background: rgba(22, 33, 62, 0.5);
+            border-radius: 12px;
             cursor: pointer;
             text-align: center;
             font-size: 13px;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            color: #c0c0d0;
         }
 
         .option-btn:hover {
             border-color: #667eea;
-            background: #f5f5ff;
+            background: rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
         }
 
         .option-btn.selected {
             border-color: #667eea;
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
         }
 
         .nav-buttons {
@@ -327,21 +400,28 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 12px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .back-btn {
-            background: #e0e0e0;
-            color: #333;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .back-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
         }
 
         .next-btn {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .next-btn:hover {
-            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
         /* Dashboard */
@@ -360,8 +440,9 @@
         .dashboard-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 16px;
-            border-radius: 15px 15px 0 0;
+            padding: 20px 16px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
         .dashboard-header .user-info {
@@ -381,39 +462,50 @@
         .logout-btn {
             width: 100%;
             padding: 8px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.15);
             color: white;
-            border: 1px solid white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
         }
 
         /* Tabs */
         .dashboard-tabs {
             display: flex;
             gap: 0;
-            background: white;
-            border-bottom: 1px solid #e0e0e0;
+            background: rgba(26, 26, 46, 0.6);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         .tab-btn {
             flex: 1;
-            padding: 12px;
-            background: white;
+            padding: 14px;
+            background: transparent;
             border: none;
             cursor: pointer;
             font-size: 12px;
             font-weight: 600;
-            color: #999;
-            transition: all 0.3s;
+            color: #707080;
+            transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn:hover {
+            color: #b0b0c0;
         }
 
         .tab-btn.active {
             color: #667eea;
             border-bottom-color: #667eea;
+            box-shadow: 0 -2px 10px rgba(102, 126, 234, 0.1);
         }
 
         .tab-content {
@@ -436,14 +528,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 16px;
+            gap: 20px;
         }
 
         .card-stack {
             position: relative;
             width: 100%;
-            height: 400px;
-            max-width: 320px;
+            height: 380px;
+            max-width: 300px;
         }
 
         .card {
@@ -452,31 +544,36 @@
             height: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border-radius: 20px;
+            border-radius: 25px;
             padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(102, 126, 234, 0.2);
             cursor: grab;
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             touch-action: none;
             user-select: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(102, 126, 234, 0.3);
         }
 
         .card.dragging {
             transition: none;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6), 0 0 50px rgba(102, 126, 234, 0.4);
         }
 
         .card.swiped-left {
-            transform: translateX(-150%) rotate(-30deg);
+            transform: translateX(-150%) rotate(-35deg);
             opacity: 0;
             pointer-events: none;
         }
 
         .card.swiped-right {
-            transform: translateX(150%) rotate(30deg);
+            transform: translateX(150%) rotate(35deg);
             opacity: 0;
             pointer-events: none;
         }
@@ -486,77 +583,83 @@
         }
 
         .card-name {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
 
         .card-goal {
             font-size: 14px;
             opacity: 0.95;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            font-weight: 500;
         }
 
         .card-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
             font-size: 12px;
             opacity: 0.9;
         }
 
         .card-stat {
-            background: rgba(255,255,255,0.2);
-            padding: 8px;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            font-weight: 500;
         }
 
         .action-buttons {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             justify-content: center;
             width: 100%;
         }
 
         .action-btn {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             border: none;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
         }
 
         .skip-btn {
-            background: white;
-            color: #ff6b6b;
-            font-size: 28px;
+            background: rgba(26, 26, 46, 0.8);
+            color: #667eea;
+            border: 2px solid #667eea;
         }
 
         .skip-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(255,107,107,0.3);
+            transform: scale(1.12);
+            background: rgba(102, 126, 234, 0.1);
+            box-shadow: 0 10px 35px rgba(102, 126, 234, 0.3);
         }
 
         .like-btn {
-            background: #ff6b6b;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
             color: white;
-            font-size: 28px;
         }
 
         .like-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(255,107,107,0.3);
+            transform: scale(1.12);
+            box-shadow: 0 10px 35px rgba(255, 107, 107, 0.4);
         }
 
         .no-more {
             text-align: center;
-            color: #999;
+            color: #707080;
             font-size: 14px;
         }
 
@@ -568,50 +671,61 @@
         }
 
         .match-card {
-            background: white;
-            border-radius: 12px;
+            background: rgba(22, 33, 62, 0.6);
+            border-radius: 16px;
             padding: 16px;
-            border: 2px solid #e0e0e0;
+            border: 1px solid rgba(102, 126, 234, 0.2);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .match-card:hover {
+            border-color: #667eea;
+            background: rgba(22, 33, 62, 0.8);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+            transform: translateY(-4px);
         }
 
         .match-card:active {
             transform: scale(0.98);
-            border-color: #667eea;
         }
 
         .match-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .match-name {
             font-size: 16px;
             font-weight: bold;
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .match-badge {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 4px 8px;
+            padding: 4px 10px;
             border-radius: 12px;
             font-size: 10px;
             font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .match-goal {
             font-size: 13px;
-            color: #666;
+            color: #c0c0d0;
             margin-bottom: 8px;
         }
 
         .match-details {
             font-size: 11px;
-            color: #999;
+            color: #707080;
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
@@ -620,14 +734,21 @@
         .chat-btn {
             width: 100%;
             padding: 10px;
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
             font-size: 12px;
-            margin-top: 10px;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .chat-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
         /* Chat Section */
@@ -641,10 +762,11 @@
         .chat-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 16px;
-            border-radius: 10px;
+            padding: 14px 16px;
+            border-radius: 12px;
             margin: -16px -16px 0 -16px;
-            padding: 12px 16px;
+            padding: 14px 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
         .chat-header h3 {
@@ -657,7 +779,21 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
+            padding: 8px 0;
+        }
+
+        .messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages::-webkit-scrollbar-track {
+            background: rgba(26, 26, 46, 0.5);
+        }
+
+        .messages::-webkit-scrollbar-thumb {
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 3px;
         }
 
         .message {
@@ -672,20 +808,23 @@
 
         .message-content {
             max-width: 80%;
-            padding: 10px 12px;
-            border-radius: 12px;
+            padding: 12px 14px;
+            border-radius: 16px;
             font-size: 13px;
             word-wrap: break-word;
+            line-height: 1.4;
         }
 
         .message.received .message-content {
-            background: #f0f0f0;
-            color: #333;
+            background: rgba(102, 126, 234, 0.15);
+            color: #e0e0e0;
+            border: 1px solid rgba(102, 126, 234, 0.2);
         }
 
         .message.sent .message-content {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         @keyframes slideIn {
@@ -701,32 +840,50 @@
 
         .input-area {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
         }
 
         .input-area input {
             flex: 1;
-            padding: 10px 12px;
-            border: 2px solid #e0e0e0;
+            padding: 11px 14px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
             border-radius: 20px;
             font-size: 13px;
+            background: rgba(22, 33, 62, 0.8);
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .input-area input::placeholder {
+            color: #707080;
         }
 
         .input-area input:focus {
             outline: none;
             border-color: #667eea;
+            background: rgba(22, 33, 62, 0.95);
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
         }
 
         .input-area button {
-            padding: 10px 16px;
-            background: #667eea;
+            padding: 11px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
             font-size: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .input-area button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
         }
 
         .empty-state {
@@ -735,21 +892,29 @@
             justify-content: center;
             height: 100%;
             text-align: center;
-            color: #999;
+            color: #707080;
         }
 
         .empty-state h3 {
             font-size: 16px;
             margin-bottom: 8px;
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         @media (max-width: 480px) {
             .mobile-container {
                 max-width: 100%;
-                border-radius: 20px;
+                border-radius: 25px;
                 max-height: 100vh;
                 border-width: 0;
+            }
+
+            .mobile-container::before {
+                width: 120px;
+                height: 24px;
             }
         }
     </style>
@@ -838,13 +1003,13 @@
                             <div class="toggle-auth">
                                 Don't have account? <a onclick="navigate('signup')">Sign Up</a>
                             </div>
-                            <div style="text-align: center; margin-top: 16px; font-size: 11px; color: #999;">
+                            <div style="text-align: center; margin-top: 16px; font-size: 11px; color: #707080;">
                                 Demo Accounts (password: password)
                             </div>
                             <div class="demo-buttons">
-                                <button class="demo-btn" onclick="loginDemo('alex@test.com')">Alex</button>
-                                <button class="demo-btn" onclick="loginDemo('jordan@test.com')">Jordan</button>
-                                <button class="demo-btn" onclick="loginDemo('sam@test.com')">Sam</button>
+                                <button class="demo-btn" onclick="loginDemo('alex@test.com')">🎬 Alex</button>
+                                <button class="demo-btn" onclick="loginDemo('jordan@test.com')">✍️ Jordan</button>
+                                <button class="demo-btn" onclick="loginDemo('sam@test.com')">🏃 Sam</button>
                             </div>
                         </div>
                     </div>
@@ -940,118 +1105,14 @@
     <script>
         // Sample users with detailed dummy data
         const demoUsers = [
-            {
-                id: 1,
-                email: 'alex@test.com',
-                password: 'password',
-                name: 'Alex',
-                goal: 'Learn video editing',
-                level: 'Beginner',
-                looking: 'Same level',
-                frequency: 'Daily',
-                time: 'Morning',
-                style: 'Structured',
-                deadline: '3 months',
-                collab: 'Chat only'
-            },
-            {
-                id: 2,
-                email: 'jordan@test.com',
-                password: 'password',
-                name: 'Jordan',
-                goal: 'Improve content writing',
-                level: 'Intermediate',
-                looking: 'Learn together',
-                frequency: '3-4 times/week',
-                time: 'Afternoon',
-                style: 'Flexible',
-                deadline: '1 month',
-                collab: 'Check-ins'
-            },
-            {
-                id: 3,
-                email: 'sam@test.com',
-                password: 'password',
-                name: 'Sam',
-                goal: 'Run 5km daily',
-                level: 'Beginner',
-                looking: 'Same level',
-                frequency: 'Daily',
-                time: 'Morning',
-                style: 'Competitive',
-                deadline: 'No deadline',
-                collab: 'Chat'
-            },
-            {
-                id: 4,
-                email: 'casey@test.com',
-                password: 'password',
-                name: 'Casey',
-                goal: 'Learn video editing',
-                level: 'Intermediate',
-                looking: 'Same level',
-                frequency: 'Daily',
-                time: 'Evening',
-                style: 'Structured',
-                deadline: '3 months',
-                collab: 'Voice/video'
-            },
-            {
-                id: 5,
-                email: 'morgan@test.com',
-                password: 'password',
-                name: 'Morgan',
-                goal: 'Run 5km daily',
-                level: 'Intermediate',
-                looking: 'Competitive',
-                frequency: 'Daily',
-                time: 'Morning',
-                style: 'Competitive',
-                deadline: 'No deadline',
-                collab: 'Chat'
-            },
-            {
-                id: 6,
-                email: 'taylor@test.com',
-                password: 'password',
-                name: 'Taylor',
-                goal: 'Improve storytelling',
-                level: 'Beginner',
-                looking: 'More experienced',
-                frequency: '3-4 times/week',
-                time: 'Evening',
-                style: 'Flexible',
-                deadline: '1 month',
-                collab: 'Check-ins'
-            },
-            {
-                id: 7,
-                email: 'riley@test.com',
-                password: 'password',
-                name: 'Riley',
-                goal: 'Learn video editing',
-                level: 'Beginner',
-                looking: 'More experienced',
-                frequency: '3-4 times/week',
-                time: 'Afternoon',
-                style: 'Structured',
-                deadline: '3 months',
-                collab: 'Voice/video'
-            },
-            {
-                id: 8,
-                email: 'blake@test.com',
-                password: 'password',
-                name: 'Blake',
-                goal: 'Learn video editing',
-                level: 'Advanced',
-                looking: 'Learn together',
-                frequency: 'Daily',
-                time: 'Morning',
-                style: 'Flexible',
-                deadline: 'No deadline',
-                collab: 'Chat'
-            }
+            { id: 1, email: 'alex@test.com', password: 'password', name: 'Alex', goal: 'Learn video editing', level: 'Beginner', looking: 'Same level', frequency: 'Daily', time: 'Morning', style: 'Structured', deadline: '3 months', collab: 'Chat only' },
+            { id: 2, email: 'jordan@test.com', password: 'password', name: 'Jordan', goal: 'Improve content writing', level: 'Intermediate', looking: 'Learn together', frequency: '3-4 times/week', time: 'Afternoon', style: 'Flexible', deadline: '1 month', collab: 'Check-ins' },
+            { id: 3, email: 'sam@test.com', password: 'password', name: 'Sam', goal: 'Run 5km daily', level: 'Beginner', looking: 'Same level', frequency: 'Daily', time: 'Morning', style: 'Competitive', deadline: 'No deadline', collab: 'Chat' },
+            { id: 4, email: 'casey@test.com', password: 'password', name: 'Casey', goal: 'Learn video editing', level: 'Intermediate', looking: 'Same level', frequency: 'Daily', time: 'Evening', style: 'Structured', deadline: '3 months', collab: 'Voice/video' },
+            { id: 5, email: 'morgan@test.com', password: 'password', name: 'Morgan', goal: 'Run 5km daily', level: 'Intermediate', looking: 'Competitive', frequency: 'Daily', time: 'Morning', style: 'Competitive', deadline: 'No deadline', collab: 'Chat' },
+            { id: 6, email: 'taylor@test.com', password: 'password', name: 'Taylor', goal: 'Improve storytelling', level: 'Beginner', looking: 'More experienced', frequency: '3-4 times/week', time: 'Evening', style: 'Flexible', deadline: '1 month', collab: 'Check-ins' },
+            { id: 7, email: 'riley@test.com', password: 'password', name: 'Riley', goal: 'Learn video editing', level: 'Beginner', looking: 'More experienced', frequency: '3-4 times/week', time: 'Afternoon', style: 'Structured', deadline: '3 months', collab: 'Voice/video' },
+            { id: 8, email: 'blake@test.com', password: 'password', name: 'Blake', goal: 'Learn video editing', level: 'Advanced', looking: 'Learn together', frequency: 'Daily', time: 'Morning', style: 'Flexible', deadline: 'No deadline', collab: 'Chat' }
         ];
 
         const questions = [
@@ -1070,12 +1131,10 @@
         let dragStart = { x: 0, y: 0 };
         let currentCard = null;
 
-        // Initialize
         if (!localStorage.getItem('users')) {
             localStorage.setItem('users', JSON.stringify(demoUsers));
         }
 
-        // Navigation
         function navigate(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(page).classList.add('active');
@@ -1103,7 +1162,6 @@
             }
         }
 
-        // Auth
         function signup() {
             const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
@@ -1174,7 +1232,6 @@
             navigate('landing');
         }
 
-        // Onboarding
         function showQuestion() {
             const q = questions[currentQuestion];
             document.getElementById('questionTitle').textContent = q.title;
@@ -1191,8 +1248,10 @@
                 input.style.width = '100%';
                 input.style.padding = '12px';
                 input.style.borderRadius = '10px';
-                input.style.border = '2px solid #e0e0e0';
+                input.style.border = '2px solid rgba(102, 126, 234, 0.2)';
                 input.style.fontSize = '14px';
+                input.style.background = 'rgba(22, 33, 62, 0.5)';
+                input.style.color = '#e0e0e0';
                 container.appendChild(input);
                 input.focus();
             } else {
@@ -1254,7 +1313,6 @@
             navigate('dashboard');
         }
 
-        // Dashboard
         function loadDashboard() {
             currentUser = JSON.parse(localStorage.getItem('currentUser'));
             document.getElementById('userNameSidebar').textContent = currentUser.name || currentUser.email.split('@')[0];
@@ -1262,7 +1320,6 @@
             showSwipeCard();
         }
 
-        // Swipe Cards with Tinder-style animation
         function getCompatibleUsers() {
             const users = JSON.parse(localStorage.getItem('users') || '[]');
             return users.filter(u =>
@@ -1303,7 +1360,6 @@
                 </div>
             `;
 
-            // Mouse events
             card.addEventListener('mousedown', startDrag);
             card.addEventListener('touchstart', startDrag);
 
@@ -1395,7 +1451,6 @@
             }
         }
 
-        // Matches
         function showMatches() {
             const users = JSON.parse(localStorage.getItem('users') || '[]');
             const matches = users.filter(u => currentUser.matches && currentUser.matches.includes(u.id));
@@ -1429,7 +1484,6 @@
             });
         }
 
-        // Chat
         function openChat(matchId) {
             currentChatMatch = matchId;
             const users = JSON.parse(localStorage.getItem('users') || '[]');
